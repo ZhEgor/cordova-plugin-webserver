@@ -1,0 +1,29 @@
+repositories {
+    google()
+    mavenCentral()
+}
+
+def ktor_version = "1.5.0"
+def coroutines_version = "1.4.0"
+
+android {
+    packagingOptions {
+        jniLibs {
+            excludes += ['META-INF/*', 'META-INF/licenses/*']
+        }
+        resources {
+            excludes += ['META-INF/*', 'META-INF/licenses/*', '**/attach_hotspot_windows.dll']
+        }
+    }
+}
+
+dependencies {
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+    // Embedded Server
+    implementation "io.ktor:ktor-server-core:$ktor_version"
+    implementation "io.ktor:ktor-gson:$ktor_version"
+    implementation "io.ktor:ktor-server-netty:$ktor_version"
+    implementation "io.ktor:ktor-websockets:$ktor_version"
+}
